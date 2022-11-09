@@ -1,0 +1,22 @@
+<html>
+
+<body>
+    <div id="keymap-div"></div>
+    <img src="" alt="keymap cheatsheet" id="keymap-img">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var rotator = document.getElementById('keymap-div');
+            var img = document.getElementById('keymap-img');
+            var delayInSeconds = 0.1;
+            async function changeImage() {
+                let image_path = await eel.get_image_path()(); // Call a Python function
+                rotator.textContent = image_path;
+                img.src = image_path;
+            };
+            setInterval(changeImage, delayInSeconds * 1000);
+        })();
+    </script>
+</body>
+
+</html>

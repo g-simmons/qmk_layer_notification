@@ -20,9 +20,10 @@ function listener() {
       .filter((d) => d.vendorId == device.vid && d.productId == device.pid && d.usage == device.usage)
       .sort(order);
     let active = new HID.HID(devices[device.index].path);
+    active.setNonBlocking(1);
 
     active.on("data", function (data) {
-      doNotify(data.toString());
+      console.log(data);
     });
   }, 100);
 }
